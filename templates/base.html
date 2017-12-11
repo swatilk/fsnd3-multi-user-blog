@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link type="text/css" rel="stylesheet" href="/static/main.css" />
+
+  <title>CS 253 Blog</title>
+</head>
+
+<body>
+  <a href="/blog" class="main-title">
+    Multi User Blog
+  </a>
+  <div>
+    {% if uid: %}
+        <a href="/blog/newpost" class="btn btn-primary">New Post</a>
+        <a href="/logout" class="btn btn-primary">logout</a>
+    {% else: %}
+        <a href="/signup" class="btn btn-primary">Sign up</a>
+        <a href="/login" class="btn btn-primary">Login</a>
+    {% endif %}
+  </div>
+  <div id="content">
+  {% block content %}
+  {% endblock %}
+  </div>
+</body>
+
+</html>
+
