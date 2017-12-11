@@ -1,5 +1,5 @@
 # fsnd3-multi-user-blog
-Multi user blog example with cookie authentication
+# Multi user blog example with cookie authentication
 To run the project,
 1) Clone the project on your local machine
 2) Install [Google App Engine SDK] (https://cloud.google.com/appengine/downloads#Google_App_Engine_SDK_for_Python)
@@ -13,9 +13,9 @@ gcloud app browse
 ```
 This will run the project on a generated URL.
 
-                                ##OR
+                                ## OR
                                 
-####To run the project on a local development server
+#### To run the project on a local development server
 1) Clone the project on to your local machine
 2) On your terminal, navigate to the location of the folder and type in
 ```python
