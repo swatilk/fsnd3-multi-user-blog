@@ -1,9 +1,9 @@
 # fsnd3-multi-user-blog
 # Multi user blog example with cookie authentication
-### Live project is [here] (https://blog-185606.appspot.com/signup)
+### Live project is [here](https://blog-185606.appspot.com/signup)
 To run the project,
 1) Clone the project on your local machine
-2) Install [Google App Engine SDK] (https://cloud.google.com/appengine/downloads#Google_App_Engine_SDK_for_Python)
+2) Install [Google App Engine SDK](https://cloud.google.com/appengine/downloads#Google_App_Engine_SDK_for_Python)
 3) In your terminal (command prompt), navigate to the project folder and type in  
 ```python
 gcloud app deploy
@@ -14,7 +14,7 @@ gcloud app browse
 ```
 This will run the project on a generated URL.
 
-                                ## OR
+                                 OR
                                 
 #### To run the project on a local development server
 1) Clone the project on to your local machine
