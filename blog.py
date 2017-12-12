@@ -172,7 +172,7 @@ class PostPage(BlogHandler):
 
     def post(self, post_id):
         if not self.user:
-            self.redirect('/')
+            return self.redirect('/login')
 
         subject = self.request.get('subject')
         content = self.request.get('content')
@@ -210,27 +210,28 @@ class EditPost(BlogHandler):
         key = db.Key.from_path('Post', int(post_id), parent=blog_key())
         post = db.get(key)
 
-        uid = self.read_secure_cookie('user_id')
+        if post is not None:
+            uid = self.read_secure_cookie('user_id')
 
-        subject = self.request.get('subject')
-        content = self.request.get('content')
+            subject = self.request.get('subject')
+            content = self.request.get('content')
 
-        if subject and content and post.user_id == uid:
-            post.subject = subject
-            post.content = content
-            post.put()
-            if post.parent_blog:
-                redirect_id = post.parent_blog
+            if subject and content and post.user_id == uid:
+                post.subject = subject
+                post.content = content
+                post.put()
+                if post.parent_blog:
+                    redirect_id = post.parent_blog
+                else:
+                    redirect_id = post.key().id()
+                    self.write(redirect_id)
+                    error = "Sorry! that blog post does not exist"
+                    self.render("edit.html", error=error)
+
+                self.redirect('/blog/%s' % str(redirect_id))
             else:
-                redirect_id = post.key().id()
-                self.write(redirect_id)
-                error = "Sorry! that blog post does not exist"
-                self.render("edit.html", error=error)
-
-            self.redirect('/blog/%s' % str(redirect_id))
-        else:
-            error = "subject and content, please!"
-            self.render("edit.html", post = post, error=error)
+                error = "subject and content, please!"
+                self.render("edit.html", post = post, error=error)
 
 
 class NewPost(BlogHandler):
@@ -247,7 +248,7 @@ class NewPost(BlogHandler):
 
         uid = self.read_secure_cookie('user_id')
 
-        if subject and content:
+        if subject and content and uid:
             p = Post(parent = blog_key(), subject = subject, content = content, user_id = uid)
             p.put()
             self.redirect('/blog/%s' % str(p.key().id()))
@@ -268,7 +269,7 @@ class DeletePost(BlogHandler):
         uid = self.read_secure_cookie('user_id')
 
         if (int(post.user_id) != int(uid)):
-            error = 'You don\'t have permission to delete this post'
+            error = 'Sorry, you cannot delete this post'
         else:
             error = ''
             db.delete(key)
