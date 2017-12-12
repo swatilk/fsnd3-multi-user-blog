@@ -1,5 +1,6 @@
 # fsnd3-multi-user-blog
 # Multi user blog example with cookie authentication
+### Live project is [here] (https://blog-185606.appspot.com/signup)
 To run the project,
 1) Clone the project on your local machine
 2) Install [Google App Engine SDK] (https://cloud.google.com/appengine/downloads#Google_App_Engine_SDK_for_Python)
