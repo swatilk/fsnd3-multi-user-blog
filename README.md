@@ -19,6 +19,6 @@ This will run the project on a generated URL.
 1) Clone the project on to your local machine
 2) On your terminal, navigate to the location of the folder and type in
 ```python
-dev_appserver.py PATH-TO-YOUR-FOLDER_WHERE_.PY_FOLDER_LIVES
+dev_appserver.py PATH-TO-YOUR-FOLDER_WHERE_.PY_FILE_LIVES
 ```
 3) This will open instances and runs the app on pre assigned port number
